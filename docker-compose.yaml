@@ -1,0 +1,17 @@
+version: "3.8"
+
+networks:
+  CRMNOTE_XX:
+    name: CRMNOTE_XX
+
+services:
+  client:
+    build:
+      context: .
+      dockerfile: DockerFile
+      target: develop-stage
+    volumes:
+      - .:/app
+    networks:
+      - CRMNOTE_XX
+    command: /bin/sh -c "npm install"
