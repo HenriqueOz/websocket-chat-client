@@ -5,3 +5,4 @@ services:
     volumes:
       - .:/websocket-chat
     working_dir: /websocket-chat
+    command: npm install

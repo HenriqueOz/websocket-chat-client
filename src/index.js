@@ -1,17 +1,20 @@
 import { InputHandler } from "./input_handler.js";
 import { Client } from "./client.js";
-import chalk from "chalk";
 
 async function main() {
   const inputHandler = new InputHandler();
 
+  inputHandler.printMessage(
+    "Type 'exit' or 'EXIT' to, surprisingly, exit",
+    "0;32"
+  );
   const name = await inputHandler.askQuestion("What's your name? ");
   const client = new Client({ name: name, inputHandler: inputHandler });
 
   client.connect();
 
   inputHandler.onInput((line) => {
-    if (line === "exit") {
+    if (line.toString().toLowerCase() === "exit") {
       client.disconnect();
       inputHandler.close();
       process.exit();

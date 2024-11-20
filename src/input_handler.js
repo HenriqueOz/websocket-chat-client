@@ -21,12 +21,17 @@ export class InputHandler {
     readline.cursorTo(process.stdout, 0);
   }
 
-  print(message, color = "") {
+  printMessage(message, color = "") {
     this.clearLine();
     console.log(`\x1b[${color}m${message}\x1b[0m`);
   }
 
-  printMessage(author, message, color = "") {
+  printMessageAndPrompt(message, color) {
+    this.printMessage(message, color);
+    this.rl.prompt();
+  }
+
+  printMessageChatMessageAndPrompt(author, message, color = "") {
     this.clearLine();
     console.log(`\x1b[${color}m${author}: \x1b[0m${message}`);
     this.rl.prompt();
