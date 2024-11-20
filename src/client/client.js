@@ -1,5 +1,5 @@
 import io from "socket.io-client";
-import { MessageModel } from "./models/message_model.js";
+import { MessageModel } from "../models/message_model.js";
 
 export class Client {
   #url = "ws://10.24.24.169:3001";
@@ -21,7 +21,10 @@ export class Client {
 
   #setupEvents() {
     this.#socket.on("connect", () => {
-      this.#inputHandler.printMessage("connected to the server", "0;32");
+      this.#inputHandler.printMessageAndPrompt(
+        "connected to the server",
+        "0;32"
+      );
 
       this.#sendConnectionMessage({ name: this.#name });
     });
@@ -42,7 +45,10 @@ export class Client {
 
     this.#socket.on("connect_error", (err) => {
       if (!this.#hasPrintedErrorMessage) {
-        this.#inputHandler.printMessage("can't connect to the server", "0;32");
+        this.#inputHandler.printMessage(
+          "error: can't connect to the server",
+          "0;32"
+        );
         this.#inputHandler.rl.prompt();
         this.#hasPrintedErrorMessage = true;
       }
@@ -54,7 +60,7 @@ export class Client {
   }
 
   #sendConnectionMessage({ name }) {
-    if (this.#socket.isConnected) {
+    if (this.#socket.connected) {
       this.#socket.emit(
         "connection-message",
         JSON.stringify({
@@ -65,7 +71,7 @@ export class Client {
   }
 
   broadcastMessage({ body }) {
-    if (this.#socket.isConnected) {
+    if (this.#socket.connected) {
       this.#socket.emit(
         "message",
         JSON.stringify(

@@ -31,7 +31,7 @@ export class InputHandler {
     this.rl.prompt();
   }
 
-  printMessageChatMessageAndPrompt(author, message, color = "") {
+  printChatMessageAndPrompt(author, message, color = "") {
     this.clearLine();
     console.log(`\x1b[${color}m${author}: \x1b[0m${message}`);
     this.rl.prompt();

@@ -1,5 +1,5 @@
-import { InputHandler } from "./input_handler.js";
-import { Client } from "./client.js";
+import { InputHandler } from "./input_handler/input_handler.js";
+import { Client } from "./client/client.js";
 
 async function main() {
   const inputHandler = new InputHandler();
