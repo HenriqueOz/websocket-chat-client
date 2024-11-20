@@ -1,4 +1,5 @@
 import chalk from "chalk";
+import { stdout } from "node:process";
 import readline from "node:readline";
 
 export class InputHandler {
@@ -28,13 +29,13 @@ export class InputHandler {
 
   printMessageAndPrompt(message, color) {
     this.printMessage(message, color);
-    this.rl.prompt();
+    this.rl.prompt(true);
   }
 
   printChatMessageAndPrompt(author, message, color = "") {
     this.clearLine();
     console.log(`\x1b[${color}m${author}: \x1b[0m${message}`);
-    this.rl.prompt();
+    this.rl.prompt(true);
   }
 
   onInput(callback) {

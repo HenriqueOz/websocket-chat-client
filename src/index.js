@@ -23,6 +23,12 @@ async function main() {
       client.broadcastMessage({ body: line });
     }
   });
+
+  process.on("SIGINT", () => {
+    client.disconnect();
+    inputHandler.close();
+    process.exit();
+  });
 }
 
 main();
