@@ -2,7 +2,9 @@ import io from "socket.io-client";
 import { MessageModel } from "../models/message_model.js";
 
 export class Client {
-  #url = "ws://10.24.24.169:3001";
+  #host = process.env.HOST;
+  #port = process.env.PORT;
+  #url = `ws://${this.#host}:${this.#port}`;
   #socket = null;
   #inputHandler = null;
   #name = "";
@@ -41,6 +43,7 @@ export class Client {
 
     this.#socket.on("disconnect", () => {
       this.#inputHandler.printMessage("disconnected from the server", "0;32");
+      this.#hasPrintedErrorMessage = false;
     });
 
     this.#socket.on("connect_error", (err) => {

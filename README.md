@@ -1,6 +1,6 @@
 ## Para rodar o projeto via docker:
 
-`docker-compose run --rm websocket-chat node src/index.js`
+`docker-compose run --rm websocket-chat node --env-file=.env src/index.js`
 
 ---
 
