@@ -6,6 +6,14 @@ Change the server address in the [.env file](https://github.com/Peguinm/websocke
 
 **Run the project**
 
+Clone the project
+
+```
+git clone https://github.com/Peguinm/websocket-chat-client.git
+```
+
+Run inside the project folder
+
 ```
 docker-compose run --rm websocket-chat node --env-file=.env src/index.js
 ```
