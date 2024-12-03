@@ -1,7 +1,11 @@
 ## Websocket chat client
 
-Client via terminal para uso de chat feito com node usando a lib socket.io
+Terminal chat client I developed to test my [websocket chat](https://github.com/Peguinm/websocket-chat-server)
 
-**Para rodar o projeto via docker**
+Change the server address in the [.env file](https://github.com/Peguinm/websocket-chat-client/blob/master/.env) to connect to the server
 
-`docker-compose run --rm websocket-chat node --env-file=.env src/index.js`
+**Run the project**
+
+```
+docker-compose run --rm websocket-chat node --env-file=.env src/index.js
+```
