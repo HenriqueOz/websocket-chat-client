@@ -1,5 +1,5 @@
 export class MessageModel {
-  constructor({ author, body, date, id }) {
+  constructor({ author, body, date }) {
     this.author = author;
     this.body = body;
     this.date = date;
@@ -12,7 +12,6 @@ export class MessageModel {
       author: jsonData.author,
       body: jsonData.body,
       date: jsonData.date,
-      id: jsonData.id,
     });
   }
 }
